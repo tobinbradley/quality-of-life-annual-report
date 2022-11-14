@@ -1,7 +1,8 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  color: #1f2937;
+  /* font-weight: 400; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -55,13 +56,13 @@ section {
   border-radius: 8px;
   box-shadow: 5px 5px 4px #ccc;
   padding: 10px;
-  color: black;
 }
 
 h1 {
   font-weight: bold;
   font-size: 1.3em;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #111827;
+  padding: 0 0 4px;
 }
 h2 {
   font-size: 0.9em;
@@ -71,6 +72,28 @@ h2 {
 
 p {
   padding-top: 8px;
+}
+
+.icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.highlight {
+  color: #be185d;
+  stroke: #be185d;
+  fill: #be185d;
+  font-weight: 600;
 }
 
 #map {
