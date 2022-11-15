@@ -1,18 +1,42 @@
-//import './style.css'
+// The Qol Embed map takes two GET params set on initial page load:
+//   * interactive: sets whether the map is interactive or not
+//   * flyto: base64 encoding of MapLibre GL flyTo JSON
+// It takes hash arguments for the metric and selected in the form of
+//   * <metric>/<selected,selected,selected,...>
 
-// 'baker': {
-//   bearing: 27,
-//   center: [-0.15591514, 51.51830379],
-//   zoom: 15.5,
-//   pitch: 20
-//   },
-
-// https://mcmap.org/qol/embed.html?interactive=false#
-// http://localhost:3000/embed.html?interactive=false#
-
-const embedBase = "https://mcmap.org/qol/embed.html?interactive=false#"
+let embedBase = "https://mcmap.org/qol/embed.html?interactive=false&flyto="
 const map = document.getElementById('map')
 const sections = document.querySelectorAll(".slide")
+let firstRun = true
+
+
+// Intersection observer for slides
+// Does metric changing and zooming
+function handleIntersection(entries) {
+  entries.map((entry) => {
+    if (entry.isIntersecting) {
+      history.replaceState({}, "", `#${entry.target.id}`)
+      if (slideActions[entry.target.id]) {
+        // handle first run flyto
+        if (firstRun && slideActions[entry.target.id].flyto) {
+          firstRun = false
+          embedBase += window.btoa(JSON.stringify(slideActions[entry.target.id].flyto))
+        }
+        // do metric
+        if (slideActions[entry.target.id].metric) {
+          map.src = `${embedBase}#${slideActions[entry.target.id].metric}/`
+        }
+        // do flyto
+        if (slideActions[entry.target.id].flyto) {
+          map.contentWindow.postMessage(slideActions[entry.target.id].flyto, "*")
+        }
+      }
+    }
+  })
+}
+
+const observer = new IntersectionObserver(handleIntersection)
+sections.forEach(section => observer.observe(section))
 
 const slideActions = {
   intro: {
@@ -22,9 +46,9 @@ const slideActions = {
   "character-1": {
     metric: "47",
     flyto: {
-      bearing: 20,
+      bearing: 10,
       zoom: 9.8,
-      pitch: 40,
+      pitch: 30,
       speed: 0.3,
       center: [-80.843, 35.227]
     }
@@ -33,10 +57,10 @@ const slideActions = {
     metric: "11",
     flyto: {
       bearing: 10,
-      zoom: 9.7,
+      zoom: 9.8,
       pitch: 30,
       speed: 0.3,
-      curve: 0.8
+      center: [-80.843, 35.227]
     }
   },
   "character-3": {
@@ -44,9 +68,9 @@ const slideActions = {
     flyto: {
       bearing: 350,
       zoom: 9.8,
-      pitch: 50,
+      pitch: 30,
       speed: 0.3,
-      curve: 0.8
+      center: [-80.843, 35.227]
     }
   },
   "character-4": {
@@ -56,7 +80,6 @@ const slideActions = {
       zoom: 9.8,
       pitch: 30,
       speed: 0.3,
-      curve: 0.8,
       center: [-80.843, 35.227]
     }
   },
@@ -67,7 +90,6 @@ const slideActions = {
       zoom: 9.8,
       pitch: 40,
       speed: 0.3,
-      curve: 0.8,
       center: [-80.843, 35.227]
     }
   },
@@ -80,8 +102,7 @@ const slideActions = {
     flyto: {
       zoom: 10.8,
       center: [-80.843, 35.267],
-      speed: 0.3,
-      curve: 0.8
+      speed: 0.3
     }
   },
   "education-1": {
@@ -188,27 +209,3 @@ const slideActions = {
     flyto: {}
   }
 }
-
-
-// Intersection observer for slides
-// Does metric changing and zooming
-function handleIntersection(entries) {
-  entries.map((entry) => {
-    if (entry.isIntersecting) {
-      history.replaceState({}, "", `#${entry.target.id}`)
-      if (slideActions[entry.target.id]) {
-        // do metric
-        if (slideActions[entry.target.id].metric) {
-          map.src = `${embedBase}${slideActions[entry.target.id].metric}/`
-        }
-        // do flyto
-        if (slideActions[entry.target.id].flyto) {
-          map.contentWindow.postMessage(slideActions[entry.target.id].flyto, "*")
-        }
-      }
-    }
-  });
-}
-
-const observer = new IntersectionObserver(handleIntersection);
-sections.forEach(section => observer.observe(section));
