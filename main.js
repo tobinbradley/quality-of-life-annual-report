@@ -1,4 +1,4 @@
-import './style.css'
+//import './style.css'
 
 // 'baker': {
 //   bearing: 27,
@@ -25,8 +25,7 @@ const slideActions = {
       bearing: 20,
       zoom: 9.8,
       pitch: 40,
-      speed: 0.1,
-      curve: 0.8,
+      speed: 0.3,
       center: [-80.843, 35.227]
     }
   },
