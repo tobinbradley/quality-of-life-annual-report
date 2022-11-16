@@ -2,14 +2,8 @@
 
 A work in progress!
 
-## Dev
 
-```bash
-npm run dev
-```
+## TODO
 
-## Build
-
-```bash
-npm run build
-```
+* Map transitions
+* Fine editing
