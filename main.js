@@ -86,9 +86,9 @@ const slideActions = {
   "economy-1": {
     metric: "75",
     flyto: {
-      bearing: 340,
+      bearing: 30,
       zoom: 9.8,
-      pitch: 40,
+      pitch: 30,
       speed: 0.3,
       center: [-80.843, 35.227]
     }
@@ -141,14 +141,6 @@ const slideActions = {
     metric: "46",
     flyto: {}
   },
-  "health-3": {
-    metric: "45",
-    flyto: {}
-  },
-  "health-4": {
-    metric: "74",
-    flyto: {}
-  },
   "health-5": {
     metric: "28",
     flyto: {}
@@ -157,16 +149,8 @@ const slideActions = {
     metric: "76",
     flyto: {}
   },
-  "housing-2": {
-    metric: "5",
-    flyto: {}
-  },
   "housing-3": {
     metric: "8",
-    flyto: {}
-  },
-  "housing-4": {
-    metric: "9",
     flyto: {}
   },
   "housing-5": {
@@ -181,31 +165,16 @@ const slideActions = {
     metric: "58",
     flyto: {}
   },
-  "safety-3": {
-    metric: "60",
-    flyto: {}
-  },
-  "safety-4": {
-    metric: "32",
-    flyto: {}
-  },
-  "safety-5": {
-    metric: "78",
-    flyto: {}
-  },
   "transportation-1": {
     metric: "44",
     flyto: {}
   },
-  "transportation-2": {
-    metric: "36",
-    flyto: {}
-  },
   "transportation-3": {
-    metric: "34",
+    metric: "33",
     flyto: {}
   },
   outro: {
+    metric: "33",
     flyto: {}
   }
 }
