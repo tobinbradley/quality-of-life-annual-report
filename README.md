@@ -1,9 +1,3 @@
 # Quality of Life Annual Report
 
-A work in progress!
-
-
-## TODO
-
-* Map transitions
-* Fine editing
+A scrolly telling story for the Quality of Life, using the QoL embed map.
