@@ -4,7 +4,8 @@
 // It takes hash arguments for the metric and selected in the form of
 //   * <metric>/<selected,selected,selected,...>
 
-let embedBase = "https://mcmap.org/qol/embed.html?interactive=false&flyto="
+let embedBase = "https://mcmap.org/qol/embed.html?flyto="
+//let embedBase = "http://localhost:3000/embed.html?flyto="
 const map = document.getElementById('map')
 const sections = document.querySelectorAll(".slide")
 let firstRun = true
@@ -38,6 +39,7 @@ function handleIntersection(entries) {
 const observer = new IntersectionObserver(handleIntersection)
 sections.forEach(section => observer.observe(section))
 
+// slides
 const slideActions = {
   intro: {
     metric: "47",
@@ -100,30 +102,62 @@ const slideActions = {
   "economy-3": {
     metric: "88",
     flyto: {
-      zoom: 10.8,
-      center: [-80.843, 35.267],
-      speed: 0.3
+      bearing: 10,
+      zoom: 9.4,
+      pitch: 25,
+      speed: 0.3,
+      center: [-80.843, 35.227]
     }
   },
   "education-1": {
     metric: "20",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.4,
+      pitch: 25,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "education-3": {
     metric: "66",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.4,
+      pitch: 25,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "education-4": {
     metric: "62",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.4,
+      pitch: 25,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "engagement-1": {
     metric: "52",
-    flyto: {}
+    flyto: {
+      bearing: 345,
+      zoom: 9.4,
+      pitch: 28,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "environment-1": {
     metric: "27",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.4,
+      pitch: 30,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "environment-2": {
     metric: "24",
@@ -131,11 +165,23 @@ const slideActions = {
   },
   "environment-3": {
     metric: "25",
-    flyto: {}
+    flyto: {
+      bearing: 30,
+      zoom: 9.8,
+      pitch: 40,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "health-1": {
     metric: "56",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.5,
+      pitch: 30,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "health-2": {
     metric: "46",
@@ -147,7 +193,13 @@ const slideActions = {
   },
   "housing-1": {
     metric: "76",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.5,
+      pitch: 30,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "housing-3": {
     metric: "8",
@@ -155,7 +207,13 @@ const slideActions = {
   },
   "housing-5": {
     metric: "30",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.5,
+      pitch: 30,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   "safety-1": {
     metric: "59",
@@ -171,7 +229,13 @@ const slideActions = {
   },
   "transportation-3": {
     metric: "33",
-    flyto: {}
+    flyto: {
+      bearing: 10,
+      zoom: 9.5,
+      pitch: 30,
+      speed: 0.3,
+      center: [-80.843, 35.227]
+    }
   },
   outro: {
     metric: "33",
